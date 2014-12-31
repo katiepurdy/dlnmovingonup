@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,16 +9,17 @@
     <meta name="author" content="">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
-    <title>Blog Template for Bootstrap</title>
+    <title>Fixed Top Navbar Example for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="http://getbootstrap.com/examples/blog/blog.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/navbar-fixed-top/navbar-fixed-top.css" rel="stylesheet">
 
-    <!-- Custom styles for DLN Moving On Up -->
-    <link href="css/styles.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="http://getbootstrap.com/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -28,75 +30,65 @@
 
   <body>
 
-    <div class="blog-masthead">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
-        <nav class="blog-nav">
-          <a class="blog-nav-item active" href="index.html">Welcome</a>
-          <a class="blog-nav-item" href="math.html">Mathematics</a>
-          <a class="blog-nav-item" href="english.html">English</a>
-          <a class="blog-nav-item" href="social_studies.html">Social Studies</a>
-        </nav>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Moving On Up</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mathematics <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Level 2</li>
+                <li><a href="fractions.html">Fractions</a></li>
+                <li><a href="#">Geometry</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">GED</li>
+                <li><a href="#">Algebra</a></li>
+                <li><a href="#">Calculus</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">English <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Level 2</li>
+                <li><a href="#">Sentences</a></li>
+                <li><a href="#">Commas</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">GED</li>
+                <li><a href="#">Semi-colons</a></li>
+                <li><a href="#">Advanced Comprehension</a></li>
+              </ul>
+            </li>            
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
-    </div>
+    </nav>
 
     <div class="container">
 
-      <div class="welcome-header"></div>
-      <div class="blog-header"></div>
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Navbar example</h1>
+        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>To see the difference between static and fixed top navbars, just scroll.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs &raquo;</a>
+        </p>
+      </div>
 
-      <div class="row">
-
-        <div class="col-sm-12 blog-main"> 
-
-          <div class="blog-post">
-            <h2 class="blog-post-title">Welcome to DLN's Moving On Up</h2>
-            <p class="blog-post-meta">January 1, 2015 by <a href="#">Someone</a></p>
-
-            <p>Welcome to Dartmouth Learning Network's Moving On Up, a series of courses for blah blah blah.</p>
-            <hr>
-            <p>Here, you'll find Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-            <blockquote>
-              <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </blockquote>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-            <h2>Heading</h2>
-            <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <h3>Sub-heading</h3>
-            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <ul>
-              <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-              <li>Donec id elit non mi porta gravida at eget metus.</li>
-              <li>Nulla vitae elit libero, a pharetra augue.</li>
-            </ul>
-            <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-            <ol>
-              <li>Vestibulum id ligula porta felis euismod semper.</li>
-              <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-              <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
-            </ol>
-            <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-          </div><!-- /.blog-post -->
-
-          <!--nav>
-            <ul class="pager">
-              <li><a href="#">Previous</a></li>
-              <li><a href="#">Next</a></li>
-            </ul>
-          </nav-->
-
-        </div><!-- /.blog-main -->
-
-
-      </div><!-- /.row -->
-
-    </div><!-- /.container -->
-
-    <footer class="blog-footer">
-      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
-    </footer>
+    </div> <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -104,15 +96,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-    <script src="http://getbootstrap.com/assets/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script-->
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-
-</body>
+    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>
-
