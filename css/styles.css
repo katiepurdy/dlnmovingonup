@@ -1,9 +1,16 @@
+.navbar {
+	background-color: #8DC540;
+}
+
 .welcome-header {
     background: url('../assets/header.jpg');
     height: 400px;
 }
 
 .course-iframe {
-    width: 100%;
-    height: 1000px; 
+    width: 800px;
+    height: 700px; 
+    border: 0px;
+    display: block;
+    tet-align: center;
 }
