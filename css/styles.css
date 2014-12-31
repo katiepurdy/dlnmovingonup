@@ -1,3 +1,7 @@
+body {
+    min-height: 800px;
+}
+
 .navbar {
 	background-color: #8DC540;
 }
