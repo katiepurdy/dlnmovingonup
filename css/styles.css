@@ -8,6 +8,7 @@ body {
 
 .dln-welcome-image {
     background: url('../assets/header.jpg');
+    background-repeat: no-repeat;
     height: 400px;
 }
 
