@@ -6,6 +6,13 @@ body {
 	background-color: #8DC540;
 }
 
+.navbar-default .navbar-nav>.active>a, 
+.navbar-default .navbar-nav>.active>a:hover, 
+.navbar-default .navbar-nav>.active>a:focus {
+    /*color: #555;*/
+    background-color: #AFE762;
+}
+
 .dln-welcome-image {
     background: url('../assets/header.jpg');
     background-repeat: no-repeat;
