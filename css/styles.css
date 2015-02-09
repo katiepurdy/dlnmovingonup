@@ -51,3 +51,7 @@ body {
 	display: block;
     text-align: center;
 }
+
+#dln-footer {
+    padding-bottom: 3em;
+}
