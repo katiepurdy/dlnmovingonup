@@ -41,7 +41,6 @@ body {
 }
 
 .dln-course-iframe {
-    width: 1000px;
     height: 700px; 
     border: 0px;
     text-align: center;
@@ -50,6 +49,14 @@ body {
 .dln-course-content {
 	display: block;
     text-align: center;
+}
+
+.normal-width {
+    width: 1000px;
+}
+
+.narrow-width {
+    width: 700px;    // TODO: Fine-tune this value
 }
 
 #dln-footer {

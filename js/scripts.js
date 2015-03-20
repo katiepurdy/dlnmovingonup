@@ -3,14 +3,16 @@ $(function(){ $("#dln-header").load("header.html") });
 $(function(){ $("#dln-footer").load("footer.html") });
 
 function loadCourse() {
-	var params = getSearchParameters();
-	var course = "/courses/" + params.course + "/story.html";
-	$(".dln-course-iframe").attr('src', course);
+    var params = getSearchParameters();
+    var course = "/courses/" + params.course + "/story.html";
+    var width = (params.width || "normal") + "-width";
+    $(".dln-course-iframe").addClass(width); 
+    $(".dln-course-iframe").attr('src', course);
 }
 
 function getSearchParameters() {
-      var prmstr = window.location.search.substr(1);
-      return prmstr != null && prmstr != "" ? transformToAssociativeArray(prmstr) : {};
+    var prmstr = window.location.search.substr(1);
+    return prmstr != null && prmstr != "" ? transformToAssociativeArray(prmstr) : {};
 }
 
 function transformToAssociativeArray( prmstr ) {
