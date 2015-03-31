@@ -4,7 +4,7 @@ $(function(){ $("#dln-footer").load("footer.html") });
 
 function loadCourse() {
     var params = getSearchParameters();
-    var course = "/courses/" + params.course + "/story.html";
+    var course = "/courses/" + params.course + "/story_html5.html";
     var width = (params.width || "normal") + "-width";
     $(".dln-course-iframe").addClass(width); 
     $(".dln-course-iframe").attr('src', course);
