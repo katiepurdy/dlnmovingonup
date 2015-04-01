@@ -1,3 +1,13 @@
+// Workaround to keep menu open when navigating down through
+// submenus on for touch/mobile devices 
+$(document).ready( function() {
+    $(document).on("touchstart", "li.dropdown-submenu > a", function(){
+        $("li.dropdown-submenu").removeClass("active");
+        $(this).parent().addClass("active");
+        return false;
+    });
+});
+
 // Load header and footer
 $(function(){ $("#dln-header").load("header.html") });
 $(function(){ $("#dln-footer").load("footer.html") });
