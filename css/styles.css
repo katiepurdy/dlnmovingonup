@@ -62,3 +62,11 @@ body {
 #dln-footer {
     padding-bottom: 3em;
 }
+
+.dropdown-submenu.active>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu.active>a:after {
+    border-left-color: #fff;
+}
