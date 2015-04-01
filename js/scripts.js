@@ -2,26 +2,57 @@
 $(function(){ $("#dln-header").load("header.html") });
 $(function(){ $("#dln-footer").load("footer.html") });
 
-function loadCourse() {
-    var params = getSearchParameters();
-    var course = "/courses/" + params.course + "/story.html";
-    var width = (params.width || "normal") + "-width";
-    $(".dln-course-iframe").addClass(width); 
-    $(".dln-course-iframe").attr('src', course);
+// Loaded in getCourseSettings()
+var COURSE_SETTINGS = {
+    'math/fractions': { 'title': "Fractions" },
+    'english/front_yard': { 'title': 'My Front Yard', 'width': 'narrow-width' }
 }
+
+// Defaults for unconfigured settings
+var DEFAULT_WIDTH = "normal-width";
+var DEFAULT_TITLE = "Dartmouth Learning Network: Moving On Up";
+
+
+function loadCourse() {
+    // Get course specifics
+    var params = getSearchParameters();
+    var settings = getCourseSettings(params.course);
+    var courseUrl = "/courses/" + params.course + "/story_html5.html";
+
+    // Load the course in an iframe
+    $(".dln-course-iframe").addClass(settings['width']); 
+    $(".dln-course-iframe").attr('src', courseUrl);
+    $(document).prop("title", settings['title']);
+}
+
+
+function getCourseSettings(course) {
+    // Pull course settings (width, title) from COURSE_SETTINGS
+    var settings = {};
+    for (var candidate in COURSE_SETTINGS) {
+        // i.e. if course.startsWith(candidate); see http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string#4579228
+        if (course.lastIndexOf(candidate) === 0) {
+            settings = COURSE_SETTINGS[candidate];
+        }
+    }
+    settings['title'] = settings['title'] || DEFAULT_TITLE;
+    settings['width'] = settings['width'] || DEFAULT_WIDTH;
+    return settings;
+}
+
 
 function getSearchParameters() {
-    var prmstr = window.location.search.substr(1);
-    return prmstr != null && prmstr != "" ? transformToAssociativeArray(prmstr) : {};
+    var paramString = window.location.search.substr(1);
+    return paramString != null && paramString != "" ? transformToAssociativeArray(paramString) : {};
 }
 
-function transformToAssociativeArray( prmstr ) {
+
+function transformToAssociativeArray(paramString) {
     var params = {};
-    var prmarr = prmstr.split("&");
-    for ( var i = 0; i < prmarr.length; i++) {
-        var tmparr = prmarr[i].split("=");
-        params[tmparr[0]] = tmparr[1];
+    var paramArray = paramString.split("&");
+    for ( var i = 0; i < paramArray.length; i++) {
+        var tempArray = paramArray[i].split("=");
+        params[tempArray[0]] = tempArray[1];
     }
     return params;
 }
-
