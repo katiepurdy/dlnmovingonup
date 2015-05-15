@@ -6,6 +6,11 @@ $(document).ready( function() {
         $(this).parent().addClass("active");
         return false;
     });
+
+    // Horrific fix for setting the background colour in the content iframe
+    $(".dln-course-iframe").load(function(){
+        $(".dln-course-iframe").contents().find("body").css('background-color', '#eee');
+    });
 });
 
 // Load header and footer
