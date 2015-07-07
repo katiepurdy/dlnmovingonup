@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,11 +38,26 @@
     <div id="dln-header"></div>
 
     <div class="container">
-        <h4>Contact Dartmouth Learning Network</h4>
+        <h4>Dartmouth Learning Network</h4>
 
-        <!-- Standard contact us form with a couple of optional questions: -->
-        <!-- How did you hear about us? -->
-        <!-- What were you doing when  -->
+        200-260 Wyse Road<br/>
+        Dartmouth, NS B3A 1N3<br/>
+
+        Phone: 1 (902) 463-9179<br/>
+        Fax: 1 (902) 464-3052<br/>
+        e-mail: <a href="mailto:admin@dartmouthlearning.net">admin@dartmouthlearning.net</a><br/>
+
+        <form id="contact_form" action="/php/send_contact_form.php" method="post">
+            <label for="contact_name">Name:</label><input label="name" id="contact_name"></input><br/>
+            <label for="contact_email">Email:</label><input label="email" id="contact_email"></input><br/>
+            <label for="contact_subject">Subject:</label><input label="subject" id="contact_name"></input><br/>
+            <label for="contact_message">Message:</label>
+            <textarea label="message" id="contact_message" type="textarea"></textarea>
+            <label for="contact_antispam">3 + 2 =</label><input label="antispam" id="contact_antispam"></input></br>
+            <input type="submit" name="submit" id="submit"></input>
+            <!-- <label for="contact_how_hear">How did you hear about us?</label><input id="contact_how_hear"></input>
+            <label for="contact_purpose">What were you here?</label><input id="" type="textarea"></input> -->
+        </form>
 
     </div> <!-- /container -->
 
