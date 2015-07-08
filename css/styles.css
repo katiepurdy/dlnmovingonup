@@ -12,14 +12,14 @@ body {
     color: #eee;
 }
 
-.navbar-default .navbar-nav>.active>a, 
-.navbar-default .navbar-nav>.active>a:hover, 
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
     background-color: #AFE762;
 }
 
 /* Hover colours in navbar */
-.navbar-default .navbar-nav>li>a:hover, 
+.navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-nav>li>a:focus {
     color: #999;
     background-color: transparent;
@@ -41,7 +41,7 @@ body {
 }
 
 .dln-course-iframe {
-    height: 700px; 
+    height: 700px;
     border: 0px;
     text-align: center;
 }
@@ -62,6 +62,8 @@ body {
 #dln-footer {
     padding-bottom: 3em;
 }
+
+.form-control { margin-bottom: 0.3em; }
 
 .dropdown-submenu.active>.dropdown-menu {
     display: block;

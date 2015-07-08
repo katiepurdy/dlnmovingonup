@@ -37,65 +37,68 @@
 
     <div id="dln-header"></div>
 
-    <div class="container">
-        <h4>Dartmouth Learning Network</h4>
+    <div class="container align-mid" >
+        <div class="col-sm-7">
+            <strong>Contact Us</strong>
+            <form id="contact_form">
+                <div class="form-group">
+                    <!-- <label for="contact_name" class="col-sm-2 control-label" >Name:</label> -->
+                    <div class="col-sm-10">
+                        <input class="form-control" label="name" id="contact_name" name="contact_name" placeholder="Name"></input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="contact_email" class="col-sm-2 control-label">Email:</label> -->
+                    <div class="col-sm-10">
+                        <input class="form-control" label="email" id="contact_email" name="contact_email" placeholder="Email"></input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="contact_subject" class="col-sm-2 control-label">Subject:</label> -->
+                    <div class="col-sm-10">
+                        <input class="form-control" label="subject" id="contact_subject" name="contact_subject" placeholder="Subject"></input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="contact_how_hear" class="col-sm-2 control-label">How did you hear about us?</label> -->
+                    <div class="col-sm-10">
+                        <input class="form-control" id="contact_how_hear" name="contact_how_hear" placeholder="How did you hear about us?"></input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="contact_message" class="col-sm-2 control-label">Message:</label> -->
+                    <div class="col-sm-10">
+                        <textarea label="message" id="contact_message" name="contact_message" class="form-control" type="textarea" placeholder="Enter your message here" rows=4></textarea>
+                    </div>
+                </div>
 
-        200-260 Wyse Road<br/>
-        Dartmouth, NS B3A 1N3<br/>
+                <div class="form-group">
+                    <!-- <div class="col-sm-3"><label for="contact_antispam" class="control-label">3 + 4 =</label></div> -->
+                    <div class="col-sm-10">
+                        <input label="antispam" id="contact_antispam" name="contact_antispam" class="form-control" placeholder="Please enter the value of 3 + 4 here so we know you are a human"></input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-8">
+                        <input type="submit" name="submit" id="submit" class="btn btn-primary"></input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-8">
+                        <div id="contact_result"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-4" >
+            <strong>Dartmouth Learning Network</strong><br/>
+            200-260 Wyse Road<br/>
+            Dartmouth, NS B3A 1N3<br/><p/><br/>
 
-        Phone: 1 (902) 463-9179<br/>
-        Fax: 1 (902) 464-3052<br/>
-        Email: <a href="mailto:admin@dartmouthlearning.net">admin@dartmouthlearning.net</a><br/>
-
-        <form id="contact_form">
-            <div class="form-group">
-                <!-- <label for="contact_name" class="col-sm-2 control-label" >Name:</label> -->
-                <div class="col-sm-10">
-                    <input class="form-control" label="name" id="contact_name" name="contact_name" placeholder="Name"></input>
-                </div>
-            </div>
-            <div class="form-group">
-                <!-- <label for="contact_email" class="col-sm-2 control-label">Email:</label> -->
-                <div class="col-sm-10">
-                    <input class="form-control" label="email" id="contact_email" name="contact_email" placeholder="Email"></input>
-                </div>
-            </div>
-            <div class="form-group">
-                <!-- <label for="contact_subject" class="col-sm-2 control-label">Subject:</label> -->
-                <div class="col-sm-10">
-                    <input class="form-control" label="subject" id="contact_subject" name="contact_subject" placeholder="Subject"></input>
-                </div>
-            </div>
-            <div class="form-group">
-                <!-- <label for="contact_how_hear" class="col-sm-2 control-label">How did you hear about us?</label> -->
-                <div class="col-sm-10">
-                    <input class="form-control" id="contact_how_hear" name="contact_how_hear" placeholder="How did you hear about us?"></input>
-                </div>
-            </div>
-            <div class="form-group">
-                <!-- <label for="contact_message" class="col-sm-2 control-label">Message:</label> -->
-                <div class="col-sm-10">
-                    <textarea label="message" id="contact_message" name="contact_message" class="form-control" type="textarea" placeholder="Your message"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="contact_antispam" class="col-sm-2 control-label">3 + 4 =</label>
-                <div class="col-sm-8">
-                    <input label="antispam" id="contact_antispam" name="contact_antispam" class="form-control"></input>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-8">
-                    <input type="submit" name="submit" id="submit" class="btn btn-primary"></input>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-8">
-                    <div id="contact_result"/>
-                </div>
-            </div>
-        </form>
-
+            <strong>Phone:</strong> 1 (902) 463-9179<br/>
+            <strong>Fax:</strong> 1 (902) 464-3052<br/>
+            <strong>Email:</strong> <a href="mailto:admin@dartmouthlearning.net">admin@dartmouthlearning.net</a><br/>
+        </div>
     </div> <!-- /container -->
 
     <!-- This div gets filled with the contents of footer.html  -->
