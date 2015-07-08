@@ -1,5 +1,5 @@
 // Workaround to keep menu open when navigating down through
-// submenus on for touch/mobile devices 
+// submenus on for touch/mobile devices
 $(document).ready( function() {
     $(document).on("touchstart", "li.dropdown-submenu > a", function(){
         $("li.dropdown-submenu").removeClass("active");
@@ -11,6 +11,10 @@ $(document).ready( function() {
     $(".dln-course-iframe").load(function(){
         $(".dln-course-iframe").contents().find("body").css('background-color', '#eee');
     });
+
+    // Wire up contact form submission
+    $("#contact_form").on("submit", submitContactForm);
+
 });
 
 // Load header and footer
@@ -35,7 +39,7 @@ function loadCourse() {
     var courseUrl = "/courses/" + params.course + "/story_html5.html";
 
     // Load the course in an iframe
-    $(".dln-course-iframe").addClass(settings['width']); 
+    $(".dln-course-iframe").addClass(settings['width']);
     $(".dln-course-iframe").attr('src', courseUrl);
     $(document).prop("title", settings['title']);
 }
@@ -70,4 +74,18 @@ function transformToAssociativeArray(paramString) {
         params[tempArray[0]] = tempArray[1];
     }
     return params;
+}
+
+function submitContactForm(e) {
+    e.preventDefault();
+    var formData = $('#contact_form').serialize();
+    alert(formData);
+    $.ajax({
+      type: "POST",
+      url: "/php/send_contact_form.php",
+      data: formData,
+      success: function (result) {
+          $("#contact_result").html(result);
+      }
+    });
 }
