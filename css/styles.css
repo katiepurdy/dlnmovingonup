@@ -65,6 +65,8 @@ body {
 
 .form-control { margin-bottom: 0.3em; }
 
+.alert { margin-top: 20px; }
+
 .dropdown-submenu.active>.dropdown-menu {
     display: block;
 }

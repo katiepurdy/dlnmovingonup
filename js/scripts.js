@@ -79,7 +79,6 @@ function transformToAssociativeArray(paramString) {
 function submitContactForm(e) {
     e.preventDefault();
     var formData = $('#contact_form').serialize();
-    alert(formData);
     $.ajax({
       type: "POST",
       url: "/php/send_contact_form.php",
