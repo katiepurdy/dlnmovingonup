@@ -1,5 +1,5 @@
 // Workaround to keep menu open when navigating down through
-// submenus on for touch/mobile devices 
+// submenus on for touch/mobile devices
 $(document).ready( function() {
     $(document).on("touchstart", "li.dropdown-submenu > a", function(){
         $("li.dropdown-submenu").removeClass("active");
@@ -11,6 +11,19 @@ $(document).ready( function() {
     $(".dln-course-iframe").load(function(){
         $(".dln-course-iframe").contents().find("body").css('background-color', '#eee');
     });
+
+    // Hide input for "How did you hear about us?"; shown on change below
+    $("#contact_form_reset").click(function(){
+        $("#contact_how_hear_other").css("visibility", "hidden");
+        $("#contact_name").focus();
+    });
+
+    // Wire up contact form submission
+    $("#contact_form").on("submit", submitContactForm);
+    $("#contact_name").focus();
+
+    // Hide bogus "URL" field on contact form (used for antispam, see PHP)
+    $("#contact_url").hide();
 });
 
 // Load header and footer
@@ -35,7 +48,7 @@ function loadCourse() {
     var courseUrl = "/courses/" + params.course + "/story_html5.html";
 
     // Load the course in an iframe
-    $(".dln-course-iframe").addClass(settings['width']); 
+    $(".dln-course-iframe").addClass(settings['width']);
     $(".dln-course-iframe").attr('src', courseUrl);
     $(document).prop("title", settings['title']);
 }
@@ -71,3 +84,27 @@ function transformToAssociativeArray(paramString) {
     }
     return params;
 }
+
+function submitContactForm(e) {
+    e.preventDefault();
+    var formData = $('#contact_form').serialize();
+    $.ajax({
+        type: "POST",
+        url: "/php/send_contact_form.php",
+        data: formData,
+        success: function (result) {
+            $("#contact_result").html(result);
+        }
+    });
+}
+
+// Show/hide "Other" input box on contact form 
+$("#contact_how_hear").change(function(){
+    var isOther = $("#contact_how_hear").val().valueOf() == "Other";
+    var visibility = isOther ? "visible" : "hidden";
+    $("#contact_how_hear_other").css("visibility", visibility);
+    if (isOther){
+        $("#contact_how_hear_other").focus();
+    }
+});
+
