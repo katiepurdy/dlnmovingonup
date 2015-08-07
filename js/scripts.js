@@ -45,11 +45,12 @@ function loadCourse() {
     // Get course specifics
     var params = getSearchParameters();
     var settings = getCourseSettings(params.course);
-    var courseUrl = "/courses/" + params.course + "/story_html5.html";
+    var courseUrl = "/courses/" + params.course + "/story.html";
 
-    // Load the course in an iframe
-    $(".dln-course-iframe").addClass(settings['width']);
-    $(".dln-course-iframe").attr('src', courseUrl);
+    // Customise the course image and the link to the course
+    $("#dln_course_link").attr('href', courseUrl);
+    $("#dln_course_image").attr('src', getCourseImageUrl(params.course));
+
     $(document).prop("title", settings['title']);
 }
 
@@ -68,6 +69,14 @@ function getCourseSettings(course) {
     return settings;
 }
 
+
+function getCourseImageUrl(course) { 
+    var courseImage = "/assets/course_images/"
+                      + course.replace(new RegExp("/", 'g'), "_") 
+                      + "_title_screen.png";
+    // TODO: provide a default image if courseImage doesn't exist
+    return courseImage;
+}
 
 function getSearchParameters() {
     var paramString = window.location.search.substr(1);

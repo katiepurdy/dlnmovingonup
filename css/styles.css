@@ -50,6 +50,14 @@ body {
     text-align: center;
 }
 
+.dln-course-link-description {
+    margin-bottom: 1.5em;
+}
+
+#dln_course_image {
+    height: 600px;
+}
+
 .dln-course-content {
 	display: block;
     text-align: center;
