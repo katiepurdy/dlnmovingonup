@@ -49,7 +49,7 @@ function loadCourse() {
 
     // Customise the course image and the link to the course
     $("#dln_course_link").attr('href', courseUrl);
-    $("#dln_course_image").attr('src', getCourseImageUrl());
+    $("#dln_course_image").attr('src', getCourseImageUrl(params.course));
 
     $(document).prop("title", settings['title']);
 }
@@ -71,8 +71,11 @@ function getCourseSettings(course) {
 
 
 function getCourseImageUrl(course) { 
-    // TODO: return a different image based on the course name
-    return '/assets/course_image_default.png';
+    var courseImage = "/assets/course_images/"
+                      + course.replace(new RegExp("/", 'g'), "_") 
+                      + "_title_screen.png";
+    // TODO: provide a default image if courseImage doesn't exist
+    return courseImage;
 }
 
 function getSearchParameters() {
