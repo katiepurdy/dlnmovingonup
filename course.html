@@ -40,9 +40,21 @@
 
     <div class="container">
 
-      <div class="dln-course-content">
-        <iframe class="dln-course-iframe" src=""></iframe>
-      </div>
+        <div class="dln-course-link-description">
+            Click the image below to launch this module. It will open in a new tab.
+        </div>
+        <div class="dln-course-link-description">
+            If you're accessing this course from a phone or tablet for the first time, you'll be prompted to download the Articulate Mobile Player application. Once you've installed the player, return to this page and click the image.
+        </div>
+        
+        <div class="dln-course-content">
+            <!-- "Course content" is really just a link to the main page of the 
+            course itself. Gets around embedding the course in an iframe, which 
+            was fraught with difficulties around launching  -->
+            <a id="dln_course_link" href="" target="_blank">
+               <img id="dln_course_image" src=""/>
+            </a>
+        </div>
 
     </div> <!-- /container -->
 
