@@ -56,6 +56,7 @@ body {
 
 #dln_course_image {
     height: 600px;
+    border-radius: 6px;
 }
 
 .dln-course-content {
