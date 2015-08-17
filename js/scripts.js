@@ -7,11 +7,6 @@ $(document).ready( function() {
         return false;
     });
 
-    // Horrific fix for setting the background colour in the content iframe
-    $(".dln-course-iframe").load(function(){
-        $(".dln-course-iframe").contents().find("body").css('background-color', '#eee');
-    });
-
     // Hide input for "How did you hear about us?"; shown on change below
     $("#contact_form_reset").click(function(){
         $("#contact_how_hear_other").css("visibility", "hidden");
@@ -40,6 +35,8 @@ var COURSE_SETTINGS = {
 var DEFAULT_WIDTH = "normal-width";
 var DEFAULT_TITLE = "Dartmouth Learning Network: Moving On Up";
 
+// Default image for courses that haven't had a screenshot taken yet
+var DEFAULT_COURSE_IMAGE = "/assets/course_images/default.png";
 
 function loadCourse() {
     // Get course specifics
@@ -72,9 +69,9 @@ function getCourseSettings(course) {
 
 function getCourseImageUrl(course) { 
     var courseImage = "/assets/course_images/"
-                      + course.replace(new RegExp("/", 'g'), "_") 
-                      + "_title_screen.png";
-    // TODO: provide a default image if courseImage doesn't exist
+                       + course.replace(new RegExp("/", 'g'), "_") 
+                       + "_title_screen.png";
+    // TODO: Provide a default image if courseImage doesn't exist
     return courseImage;
 }
 
