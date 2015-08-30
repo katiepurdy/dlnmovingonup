@@ -1,12 +1,13 @@
 
 // Browser Sniffing
-var IE =  ((document.all)&&(navigator.appVersion.indexOf("MSIE")!=-1))    ? true : false;
-var IE6 = ((document.all)&&(navigator.appVersion.indexOf("MSIE 6.")!=-1)) ? true : false;
+var strAgent = window.navigator.userAgent;
+var strAppVersion = window.navigator.appVersion;
 
-var FF = (navigator.userAgent.indexOf("Firefox")!=-1) ? true : false;
-
-var Safari3 =  (navigator.appVersion.indexOf("Safari") && navigator.appVersion.indexOf("Version/3"));
-
+var IE =  (((document.all) && (strAppVersion.indexOf("MSIE")!=-1)) || strAgent.indexOf("Trident") != -1) ? true : false;
+var IE6 = ((document.all) && (strAppVersion.indexOf("MSIE 6.")!=-1)) ? true : false;
+var gtIEWin7 = IE && ((strAgent.indexOf("Windows NT 6.1") == -1) && (strAgent.indexOf("Windows NT 6.0") == -1) && (strAgent.indexOf("Windows NT 5.1") == -1) && (strAgent.indexOf("Windows NT 5.0") == -1));
+var FF = (strAgent.indexOf("Firefox")!=-1);
+var Safari3 =  (strAppVersion.indexOf("Safari") && strAppVersion.indexOf("Version/3"));
 
 // Message Delimitors
 var g_strDelim = "|~|";
@@ -98,9 +99,15 @@ function WriteSwfObject(strSwfFile, nWidth, nHeight, strScale, strAlign, strQual
 		strLocProtocol = "http:";
 	}
 	
+	var strRole = "";
 
-	strHtml += "<div style='width:" + strWidth + "; height:" + strHeight + ";' id='divSwf'>";
-	strHtml += "<object classid='clsid:d27cdb6e-ae6d-11cf-96b8-444553540000' codebase='" + strLocProtocol + "//fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0' width='" + strWidth + "' height='" + strHeight + "' align='" + strAlign + "' id='player'>";
+	if (gtIEWin7)
+	{
+		strRole = " role='application'";
+	}
+	
+	strHtml += "<div" + strRole + " style='width:" + strWidth + "; height:" + strHeight + ";' id='divSwf' >";
+	strHtml += "<object type='application/x-shockwave-flash' data='" + strSwfFile +"' width='" + strWidth + "' height='" + strHeight + "' align='" + strAlign + "' id='player'>";
 	strHtml += "<param name='scale' value='" + strScale + "' />";
 	strHtml += "<param name='movie' value='" + strSwfFile + "' />";
 	strHtml += "<param name='quality' value='" + strQuality + "' />";
@@ -109,8 +116,7 @@ function WriteSwfObject(strSwfFile, nWidth, nHeight, strScale, strAlign, strQual
 	strHtml += "<param name='bgcolor' value='" + strBgColor + "' />";
 	strHtml += "<param name='flashvars' value='" + strFlashVars + "' />";
 	strHtml += "<param name='wmode' value='" + strWMode + "'/>";
-	strHtml += "<param name='AllowScriptAccess' value='always'>";
-	strHtml += "<embed id='eplayer' name='player' allowFullScreen='true' wmode='" + strWMode + "' src='" + strSwfFile +"' flashvars='" + strFlashVars + "' scale='" + strScale + "' quality='" + strQuality + "' bgcolor='" + strBgColor + "' width='" + strWidth + "' height='" + strHeight + "' align='" + strAlign + "' swLiveConnect='true' type='application/x-shockwave-flash' pluginspage='" + strLocProtocol + "//www.macromedia.com/go/getflashplayer' AllowScriptAccess='always'/>";
+	strHtml += "<param name='allowScriptAccess' value='always'>";
 	strHtml += "</object>";
 	strHtml += "</div>";
 
@@ -329,18 +335,7 @@ function GetHostVars()
 ////////////////////////////////////////////////////////////////////////////////
 function GetPlayer()
 {
-	var player = null;
-	
-	if (IE)
-	{
-		player = document.getElementById("player");
-	}
-	else
-	{
-		player = document.getElementById("eplayer");
-	}
-	
-	return player;
+	return document.getElementById("player");;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1189,7 +1184,7 @@ function NotifyRightUp(strId)
 	if (strId == "player" || strId == "eplayer")
 	{
 		var oPlayer = GetPlayer();
-		bReuslt = oPlayer.NotifyRightMouseUp();
+		bResult = oPlayer.NotifyRightMouseUp();
 	}
 	
 	return bResult;
@@ -1201,7 +1196,7 @@ function SetPlayerFocus()
 
 	try
 	{
-		oPlayer.tabIndex = 0;
+		oPlayer.tabIndex = 1;
 		oPlayer.focus();
 	}
 	catch (e)
@@ -1451,7 +1446,7 @@ function GetTinCanData()
 	return decodeURIComponent(g_strQuery);
 }
 	
-function SendTinCanRequest(nMessageType, strMethod, strData, strUrl, arrHeaders)
+function SendTinCanStatement(nMessageType, strMethod, strData, strUrl, arrHeaders)
 {
 	var oTinCanRequest = new Object();
 	oTinCanRequest.MessageType = nMessageType;
@@ -1762,7 +1757,7 @@ function UseXDomainRequest(strUrl)
 {
     var bResult = false;
 	
-	if (IE)
+	if (window.XDomainRequest)
 	{
 		var xmlHttp = CreateXmlHttp();
 		var anchorDest = (document.createElement("a"));
