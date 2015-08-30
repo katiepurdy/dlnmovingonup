@@ -2019,7 +2019,7 @@ ul.slidelist li.neither>span
 
 
 /* RTL Support */
-body.rtl .menu_container, body.rtl #storytitle_section
+body.rtl .menu_container, body.rtl #storytitle_section, body.rtl textarea, body.rtl input, input.rtl, textarea.rtl
 {
 	direction:rtl; 
 	/*unicode-bidi:bidi-override;*/
@@ -2370,6 +2370,16 @@ div.launch_interstitial>a
 	background:#fff;
 }
 
+.indicator
+{
+	width:10px;
+	height:10px;
+	top:20px;
+	right:0;
+	position:absolute;
+	z-index:20000;
+	background:red;
+}
 
 @keyframes rotate {
 0% {transform:translate3d(0px, 0px, 0px) rotate(0deg);}
@@ -2918,19 +2928,19 @@ ul.menu_nav
 	text-overflow: ellipsis;
 	-webkit-transform: translate3d(0,0,0);
 }
-.toptab.tab
+.toptab.tab, .toptab.customlink
 {
 	max-width:initial;
 	overflow-x: initial;
 	white-space: initial;
 }
-.toptab.tab>span
+.toptab.tab>span, .toptab.customlink>span
 {
 	float:right;
 }
 .toptab.alone
 {
-	margin-top:-10px;
+	margin-top:-7px;
 }
 .toptab.notitle
 {
@@ -2945,7 +2955,8 @@ ul.menu_nav
 	/*float:right;*/
 	font-size:11px;
 	padding:5px 8px 2px 8px;
-	line-height:16px;
+	margin-top: -3px;
+	line-height:17px;
 	cursor:pointer;
 
 }
@@ -2960,7 +2971,7 @@ ul.menu_nav
 	border-bottom:none;
 	position:relative;
 	z-index:2;
-	margin-top:-1px;
+	margin-top:-4px;
 	margin-left:-1px;
 
 
@@ -2972,7 +2983,10 @@ ul.menu_nav
 
 .toptab.active
 {
+	border:none!important;
+	z-index:2;
 }
+
 .toptab_blocker
 {
 	display:none;
@@ -3013,6 +3027,32 @@ ul.menu_nav
 {
 	display:block;
 }
+
+
+.toptab-separator
+{
+	clear:none;
+	float:right;
+	position:relative;
+	width:0;
+	height:12px;
+	margin:-3px -2px 0 0;
+	border-left: solid 1px transparent;
+	border-right: solid 1px transparent;
+	-webkit-transform: translate3d(0,0,0);
+	z-index:1;
+}
+
+#toplinks_left .toptab-separator
+{
+	float:left;
+}
+
+.toptab-separator:first-child, .toptab-separator:last-child
+{
+	display:none;
+}
+
 
 #toplinks_left .toptab .menu_container
 {
@@ -3082,7 +3122,7 @@ ul.menu_nav
 }
 .glossary_section li
 {
-	padding:3px 8px;
+	padding:8px 8px;
 }
 /*
 .glossary_section li:hover
@@ -3100,7 +3140,7 @@ ul.menu_nav
 {
 	height:32px;
 	line-height:32px;
-	font-size:16px;
+	font-size:14px;
 	font-weight:bold;
 	padding:0px 8px;
 	border-top:solid 1px #ccc;
@@ -3114,6 +3154,14 @@ ul.menu_nav
 {
 	border-top:none 0px #ccc;
 }
+
+.glossary_section .label 
+{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
 .definitiontext
 {
 	line-height:110%;
@@ -3316,7 +3364,7 @@ a.toolbar-button
 	clear: none;
 	margin: 0px 10px 0px 0px;
 	
-	padding: 1px 0px 0px 1px;
+	padding: 6px 10px 5px 8px;
 	
 	
 	border: solid 1px #B1B1B1;
@@ -3369,7 +3417,7 @@ a.toolbar-button
 .controlbar-button#control-submitall
 {
 	padding-left:3px;
-	padding-right:4px;
+	padding-right:0px;
 
 }
 
@@ -3446,6 +3494,10 @@ a.toolbar-button
 #control-next
 {
 	padding: 6px 10px 5px 4px;
+}
+#control-submitall
+{
+	padding: 6px 6px 8px 8px;
 }
 
 .controlbar-button  .icon.next-slide
@@ -3543,6 +3595,7 @@ a.toolbar-button
 {
 	margin:0px;
 	height: 29px;
+	padding: 1px 0px 0px 1px;
 }
 
 .controlbar-button.compact
@@ -3555,6 +3608,18 @@ a.toolbar-button
 	margin-top:-69px;
 	padding: 9px 8px 5px 7px;
 }
+
+#control-progress.compact
+{
+	height: 18px;
+	margin-left:7px;
+	padding: 6px 8px 5px 7px;
+}
+.controlbar-button.compact .progress-bar-button
+{
+	padding:0;
+}
+
 .volume-touchpad
 {
 	display:block;
@@ -3598,5 +3663,14 @@ a.toolbar-button
 	box-shadow: inset #ddd 0px 0px 1px 1px;
 }
 
-
+.windowsizer
+{
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	position:absolute;
+	top:0;
+	left:0;
+}
 

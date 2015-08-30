@@ -9,8 +9,8 @@
 	<link href="mobile/player.css" rel="stylesheet" type="text/css" />
 	<!--[if lt IE 9]><script>location.href = location.href.replace("_html5", "_unsupported");</script><![endif]-->
 
-	<!-- Created using Articulate Storyline 2.4 - http://www.articulate.com  --> 
-	<!-- version: 2.4.1501.717 -->
+	<!-- Created using Articulate Storyline 2.6 - http://www.articulate.com  --> 
+	<!-- version: 2.6.1507.2315 -->
 </head>
 <body>
 
@@ -90,13 +90,14 @@
 	var globals = {};
 	try
 	{
+		globals.strTitle = "Focusing on Fractions - Module 9";
 		globals.bLMS = false;
 		globals.bAOSupport = false;
 		globals.strContentFolder = "story_content";
 		globals.bProjector = false;
 		globals.strSwfFile = "story.swf";
 		globals.nWidth = 980;
-		globals.nHeight = 634;
+		globals.nHeight = 658;
 		globals.strScale = "noscale";   // noscale | show all
 		globals.strBrowserSize = "default";      // default, fullscreen, optimal
 		globals.strBgColor = "#EEEEEE";
@@ -107,7 +108,7 @@
 		globals.bScrollbars = true;
 		globals.bWarnOnCommitFail = false;
 		globals.strWMode = "window"; // opaque | window (use "window" for optimal performance, opaque for webobject support)
-		globals.strVersion = "2.4.1501.717";
+		globals.strVersion = "2.6.1507.2315";
 	}
 	catch (e) {}
 	player.initGlobals();
@@ -130,6 +131,8 @@
 				break;
 		}
 	}
+
+	browser.ResizeBrowser(globals.strBrowserSize);
 
 	if (globals.bLMS)
 	{
