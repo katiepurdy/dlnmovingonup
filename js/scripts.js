@@ -17,6 +17,9 @@ $(document).ready( function() {
     $("#contact_form").on("submit", submitContactForm);
     $("#contact_name").focus();
 
+    $("#dln_ged_course_launcher").hide();
+    $("#dln_ged_contact_info").on("submit", submitGedContactInfo);
+
     // Hide bogus "URL" field on contact form (used for antispam, see PHP)
     $("#contact_url").hide();
 });
@@ -102,6 +105,72 @@ function submitContactForm(e) {
             $("#contact_result").html(result);
         }
     });
+}
+
+var GED_CERTIFICATE_TITLES = {
+    "math/ged_prep/whole_numbers_and_money/lesson_1": "Whole Numbers & Money - Lesson 1",
+    "math/ged_prep/whole_numbers_and_money/lesson_2": "Whole Numbers & Money - Lesson 2",
+    "math/ged_prep/whole_numbers_and_money/lesson_3": "Whole Numbers & Money - Lesson 3",
+    "math/ged_prep/whole_numbers_and_money/lesson_4": "Whole Numbers & Money - Lesson 4",
+    "math/ged_prep/whole_numbers_and_money/lesson_5": "Whole Numbers & Money - Lesson 5",
+    "math/ged_prep/whole_numbers_and_money/review": "Whole Numbers & Money - Review",
+    "math/ged_prep/proportional_reasoning/lesson_1": "Proportional Reasoning - Lesson 1",
+    "math/ged_prep/proportional_reasoning/lesson_2": "Proportional Reasoning - Lesson 2",
+    "math/ged_prep/proportional_reasoning/lesson_3": "Proportional Reasoning - Lesson 3",
+    "math/ged_prep/proportional_reasoning/lesson_4": "Proportional Reasoning - Lesson 4",
+    "math/ged_prep/proportional_reasoning/review": "Proportional Reasoning - Review",
+    "math/ged_prep/statistics_and_probability/lesson_1": "Statistics & Probability - Lesson 1",
+    "math/ged_prep/statistics_and_probability/lesson_2": "Statistics & Probability - Lesson 2",
+    "math/ged_prep/statistics_and_probability/lesson_3": "Statistics & Probability - Lesson 3",
+    "math/ged_prep/statistics_and_probability/lesson_4": "Statistics & Probability - Lesson 4",
+    "math/ged_prep/statistics_and_probability/review": "Statistics & Probability - Review",
+    "math/ged_prep/measurement/lesson_1": "Measurement - Lesson 1",
+    "math/ged_prep/measurement/lesson_2": "Measurement - Lesson 2",
+    "math/ged_prep/measurement/lesson_3": "Measurement - Lesson 3",
+    "math/ged_prep/measurement/lesson_4": "Measurement - Lesson 4",
+    "math/ged_prep/measurement/review": "Measurement - Review",
+    "math/ged_prep/graphs_and_functions/lesson_1": "Graphs & Functions - Lesson 1",
+    "math/ged_prep/graphs_and_functions/lesson_2": "Graphs & Functions - Lesson 2",
+    "math/ged_prep/graphs_and_functions/lesson_3": "Graphs & Functions - Lesson 3",
+    "math/ged_prep/graphs_and_functions/lesson_4": "Graphs & Functions - Lesson 4",
+    "math/ged_prep/graphs_and_functions/review": "Graphs & Functions - Review",
+    "math/ged_prep/algebra/lesson_1": "Algebra - Lesson 1",
+    "math/ged_prep/algebra/lesson_2": "Algebra - Lesson 2",
+    "math/ged_prep/algebra/lesson_3": "Algebra - Lesson 3",
+    "math/ged_prep/algebra/lesson_4": "Algebra - Lesson 4",
+    "math/ged_prep/algebra/review": "Algebra - Review",
+    "math/ged_prep/geometry_and_trigonometry/lesson_1": "Geometry & Trigonometry - Lesson 1",
+    "math/ged_prep/geometry_and_trigonometry/lesson_2": "Geometry & Trigonometry - Lesson 2",
+    "math/ged_prep/geometry_and_trigonometry/lesson_3": "Geometry & Trigonometry - Lesson 3",
+    "math/ged_prep/geometry_and_trigonometry/review": "Geometry & Trigonometry - Review",
+};
+
+function submitGedContactInfo(e) {
+    e.preventDefault();
+    var gedName = $("#ged_name").val();
+    var gedEmail = $("#ged_email").val();
+    var urlParams = getSearchParameters();
+    var gedCourseId = urlParams['course'];
+    var gedCourse = GED_CERTIFICATE_TITLES[gedCourseId];
+    // TODO: validate name and email
+    // TODO: investigate limiting the availability of these cookies
+    // Set cookies for certificate generation last
+    // .. see also prepareGedCourseCertificate() below
+    $.cookie("gedName", gedName);
+    $.cookie("gedEmail", gedEmail);
+    $.cookie("gedCourse", gedCourse);
+    $("#dln_ged_contact_info").hide(); 
+    $("#dln_ged_course_launcher").show();
+}
+
+function prepareGedCourseCertificate() {
+    // Pull certificate details from cookie and pass to cert generator
+    var certDetails = $.param({
+        'name': $.cookie("gedName"),
+        'email': $.cookie("gedEmail"),
+        'course': $.cookie("gedCourse")
+    });
+    window.location.replace('/php/generate_certificate_of_achievement.php?' + certDetails);
 }
 
 // Show/hide "Other" input box on contact form 
