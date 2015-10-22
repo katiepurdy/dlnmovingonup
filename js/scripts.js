@@ -148,26 +148,34 @@ var GED_CERTIFICATE_TITLES = {
 function submitGedContactInfo(e) {
     e.preventDefault();
     var gedName = $("#ged_name").val();
-    var gedEmail = $("#ged_email").val();
     var urlParams = getSearchParameters();
     var gedCourseId = urlParams['course'];
     var gedCourse = GED_CERTIFICATE_TITLES[gedCourseId];
-    // TODO: validate name and email
-    // TODO: investigate limiting the availability of these cookies
-    // Set cookies for certificate generation last
-    // .. see also prepareGedCourseCertificate() below
-    $.cookie("gedName", gedName);
-    $.cookie("gedEmail", gedEmail);
-    $.cookie("gedCourse", gedCourse);
-    $("#dln_ged_contact_info").hide(); 
-    $("#dln_ged_course_launcher").show();
+    var formData = $.param({
+       'ged_name': gedName,
+       'ged_course': gedCourse,
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/php/notify_ged_lesson_commencement.php",
+        data: formData,
+        success: function (data) {
+            // Set cookies for later certificate generation; see also 
+            // prepareGedCourseCertificate() below
+            $.cookie("gedName", gedName);
+            $.cookie("gedCourse", gedCourse);
+            // Let the user through to the course
+            $("#dln_ged_contact_info").hide(); 
+            $("#dln_ged_course_launcher").show();
+        }
+    });
 }
 
 function prepareGedCourseCertificate() {
     // Pull certificate details from cookie and pass to cert generator
     var certDetails = $.param({
         'name': $.cookie("gedName"),
-        'email': $.cookie("gedEmail"),
         'course': $.cookie("gedCourse")
     });
     window.location.replace('/php/generate_certificate_of_achievement.php?' + certDetails);
