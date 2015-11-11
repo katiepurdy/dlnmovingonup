@@ -1,8 +1,22 @@
 // Workaround to keep menu open when navigating down through
 // submenus on for touch/mobile devices
 $(document).ready( function() {
+    // Bootstrap touch menu hack
     $(document).on("touchstart", "li.dropdown-submenu > a", function(){
-        $("li.dropdown-submenu").removeClass("active");
+        // @daynemay addition to Bootstrap touch menu hack to limit menu collapse in multilevel submenus
+        function getSubmenuLevel(submenuLink){
+            var classes = submenuLink.parent().attr("class").split(" ");
+            for(var i=0; i < classes.length; i++){
+                if (classes[i].startsWith("dropdown-submenu-level-")){
+                    return classes[i];
+                }
+            }
+            return null;
+        }
+        var thisSubmenuLevel = getSubmenuLevel($(this));
+        $(this).removeClass("active");
+        // Collapse all submenus at this level and reactivate only the current one
+        $("." + thisSubmenuLevel).removeClass("active");
         $(this).parent().addClass("active");
         return false;
     });
