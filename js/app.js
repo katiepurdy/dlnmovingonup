@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 
 var app = angular.module('app', ['ui.router'])
   .config(['$stateProvider', '$urlRouterProvider', 
@@ -32,6 +32,22 @@ var app = angular.module('app', ['ui.router'])
         views: {
           'main@': {
             templateUrl: 'templates/resources.html'
+          }
+        }
+      })
+      .state('root.centres', {
+        url: 'centres',
+        views: {
+          'main@': {
+            templateUrl: 'templates/centres.html'
+          }
+        }
+      })
+      .state('root.copyright', {
+        url: 'copyright-information',
+        views: {
+          'main@': {
+            templateUrl: 'templates/copyright.html'
           }
         }
       }); 
