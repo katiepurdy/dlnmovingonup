@@ -38,10 +38,6 @@ $(document).ready( function() {
     $("#contact_url").hide();
 });
 
-// Load header and footer
-$(function(){ $("#dln-header").load("header.html") });
-$(function(){ $("#dln-footer").load("footer.html") });
-
 // Loaded in getCourseSettings()
 var COURSE_SETTINGS = {
     'math/fractions': { 'title': "Fractions" },
