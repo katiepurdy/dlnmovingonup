@@ -10,89 +10,44 @@
       </button>
       <a class="navbar-brand" ui-sref="root">Moving On Up</a>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mathematics <span class="caret"></span></a>
+
+        <!-- Subjects -->
+        <li class="dropdown" ng-repeat="subject in subjects">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{subject.name}} <span class="caret"></span></a>
+
           <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-submenu dropdown-submenu-level-1">
-              <a class="dropdown-toggle" data-toggle="dropdown">Level 1</a>
+            <!-- Levels -->
+            <li class="dropdown-submenu dropdown-submenu-level-1" ng-repeat="level in subject.levels">
+              <a class="dropdown-toggle" data-toggle="dropdown">{{level.name}}</a>
+
               <ul class="dropdown-menu">
-                <li class="dropdown-submenu dropdown-submenu-level-2">
-                  <a class="dropdown-toggle" data-toggle="dropdown">Math for All Ages - Geography</a>
+                <!-- Modules -->
+                <li class="dropdown-submenu dropdown-submenu-level-2" ng-repeat="module in level.modules">
+                  <a class="dropdown-toggle" data-toggle="dropdown">{{module.name}}</a>
+
                   <ul class="dropdown-menu">
-                    <li><a href="course.html?course=math/all_ages_geography/sizes_shapes_patterns">Sizes, Shapes & Patterns</a></li>
-                    <li><a href="course.html?course=math/all_ages_geography/direction_temperature_time">Direction, Temperature & Time</a></li>
-                    <li><a><em>More to come...</em></a></li>
-                  </ul>
+                    <!-- Lessons -->
+                    <li ng-repeat="lesson in module.lessons">
+                      <a ui-sref="root.course({ subject: '{{subject.urlParam}}', module: '{{module.urlParam}}', lesson: '{{lesson.urlParam}}' })">{{lesson.name}}</a>
+                    </li>
+                    <li>
+                      <a><em>More to come...</em></a>
+                    </li><!-- /Lessons -->
+                  </ul> 
                 </li>
-                <li><a><em>More to come...</em></a></li>
-              </ul>
-            </li>
-            <li class="dropdown-submenu dropdown-submenu-level-1">
-              <a class="dropdown-toggle" data-toggle="dropdown">Level 2</a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-submenu dropdown-submenu-level-2">
-                  <a class="dropdown-toggle" data-toggle="dropdown">Focusing on Fractions</a>
-                  <ul class="dropdown-menu">
-                    <li><a href="course.html?course=math/fractions/fraction_sense_and_area_models">Fraction Sense & Area Models</a></li>
-                    <li><a href="course.html?course=math/fractions/improper_fractions_and_mixed_numbers_1">Improper Fractions & Mixed Numbers 1</a></li>
-                    <li><a href="course.html?course=math/fractions/improper_fractions_and_mixed_numbers_2">
-                    Improper Fractions & Mixed Numbers 2</a></li>
-                    <li><a href="course.html?course=math/fractions/equivalent_fractions">
-                    Equivalent Fractions</a></li>
-                    <li><a href="course.html?course=math/fractions/comparing_fractions">
-                    Comparing Fractions</a></li>
-                    <li><a href="course.html?course=math/fractions/estimating_addition_and_subtraction">
-                    Estimating Addition and Subtraction</a></li>
-                    <li><a href="course.html?course=math/fractions/adding_fractions">
-                    Adding Fractions</a></li>
-                    <li><a href="course.html?course=math/fractions/subtracting_fractions">
-                    Subtracting Fractions</a></li>
-                    <li><a href="course.html?course=math/fractions/multiplying_fractions">
-                    Multiplying Fractions</a></li>
-                    <li><a href="course.html?course=math/fractions/dividing_fractions">
-                    Dividing Fractions</a></li>
-                  </ul>
-                </li>
-                <li><a><em>More to come...</em></a></li>
-              </ul>
-            </li>
-            <li class="dropdown-submenu dropdown-submenu-level-1">
-              <a class="dropdown-toggle" data-toggle="dropdown">GED Prep</a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-submenu dropdown-submenu-level-2">
-                  <a class="dropdown-toggle" data-toggle="dropdown">Whole Numbers & Money</a>
-                  <ul class="dropdown-menu">
-                    <li><a href="gedcourse.html?course=math/ged_prep/whole_numbers_and_money/lesson_1" data-ged-title="Whole Numbers & Money - Identifying Important Words">Identifying Important Words</a></li>
-                    <li><a href="gedcourse.html?course=math/ged_prep/whole_numbers_and_money/lesson_2" data-ged-title="Whole Numbers & Money - Necessary Vs. Unnecessary Information">Necessary Vs. Unnecessary Information</a></li>
-                    <li><a><em>More to come...</em></a></li>
-                  </ul>
-                </li>
-                <li><a><em>More to come...</em></a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">English <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-submenu dropdown-submenu-level-1">
-              <a class="dropdown-toggle" data-toggle="dropdown">My Front Yard</a>
-              <ul class="dropdown-menu">
-                <li><a href="course.html?course=english/front_yard/module_1&width=narrow">Module 1</a></li>
-<!-- TODO: Reinstate once Google Chrome issue is resolved.
-                <li><a href="course.html?course=english/front_yard/module_2&width=narrow">Module 2</a></li>
-                <li><a href="course.html?course=english/front_yard/module_3&width=narrow">Module 3</a></li>
-                <li><a href="course.html?course=english/front_yard/module_4&width=narrow">Module 4</a></li>
--->
-                <li><a><em>More to come...</em></a></li>
-              </ul>
-            </li>
-            <li><a><em>More to come...</em></a></li>
-          </ul>
-        </li>
+                <li>
+                  <a><em>More to come...</em></a>
+                </li><!-- /Modules -->
+              </ul> 
+            </li> <!-- /Levels -->
+          </ul> 
+        </li> <!-- /Subjects -->
       </ul>
+          
+            
       <ul class="nav navbar-nav navbar-right">
         <li><a ui-sref="root.resources" class="navbar-right navbar-link">Resources</a></li>
         <li><a ui-sref="root.contact" class="navbar-right navbar-link">Contact Us</a></li>
@@ -110,3 +65,27 @@
     </div><!--/.nav-collapse -->
   </div>
 </nav>
+
+
+
+
+<!-- <ul>
+  <li ng-repeat="subject in subjects">
+    <a>{{subject.name}}</a>
+    <ul>
+      <li ng-repeat="level in subject.levels">
+        <a>{{level.name}}</a>
+        <ul>
+          <li ng-repeat="module in level.modules">
+            <a>{{module.name}}</a>
+            <ul>
+              <li ng-repeat="lesson in module.lessons">
+                <a ui-sref="root.course({ subject: '{{subject.urlParam}}', module: '{{module.urlParam}}', lesson: '{{lesson.urlParam}}' })">{{lesson.name}}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>

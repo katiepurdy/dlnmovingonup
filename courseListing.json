@@ -1,0 +1,109 @@
+[
+    { "name": "Mathematics",
+      "urlParam": "math",
+      "levels": [
+        { "name": "Level 1",
+          "modules": [
+            { "name": "Math for All Ages - Geography",
+              "urlParam": "all_ages_geography",
+              "lessons": [
+                {
+                  "name": "Sizes, Shapes & Patterns",
+                  "urlParam": "sizes_shapes_patterns"
+                },
+                {
+                  "name": "Direction, Temperature & Time",
+                  "urlParam": "direction_temperature_time"
+                }
+              ]
+            }
+          ]
+        },
+        { "name": "Level 2",
+          "modules": [
+            { "name": "Focusing on Fractions",
+              "urlParam": "fractions",
+              "lessons": [
+                {
+                  "name": "Fraction Sense & Area Models",
+                  "urlParam": "fraction_sense_and_area_models"
+                },
+                {
+                  "name": "Improper Fractions & Mixed Numbers 1",
+                  "urlParam": "improper_fractions_and_mixed_numbers_1"
+                },
+                {
+                  "name": "Improper Fractions & Mixed Numbers 2",
+                  "urlParam": "improper_fractions_and_mixed_numbers_2"
+                },
+                {
+                  "name": "Equivalent Fractions",
+                  "urlParam": "equivalent_fractions"
+                },
+                {
+                  "name": "Comparing Fractions",
+                  "urlParam": "comparing_fractions"
+                },
+                {
+                  "name": "Estimating Addition and Subtraction",
+                  "urlParam": "estimating_addition_and_subtraction"
+                },
+                {
+                  "name": "Adding Fractions",
+                  "urlParam": "adding_fractions"
+                },
+                {
+                  "name": "Subtracting Fractions",
+                  "urlParam": "subtracting_fractions"
+                },
+                {
+                  "name": "Multiplying Fractions",
+                  "urlParam": "multiplying_fractions"
+                },
+                {
+                  "name": "Dividing Fractions",
+                  "urlParam": "dividing_fractions"
+                }
+              ]
+            }
+          ]
+        },
+        { "name": "GED Prep",
+          "urlParam": "ged_prep",
+          "modules": [
+            { "name": "Whole Numbers & Money",
+              "urlParam": "whole_numbers_and_money",
+              "lessons": [
+                {
+                  "name": "Identifying Important Words",
+                  "urlParam": "lesson_1"
+                },
+                {
+                  "name": "Necessary vs. Unnecessary Information",
+                  "urlParam": "lesson_2"
+                }
+              ]
+            }
+          ]
+        } 
+      ]
+    },
+    { "name": "English",
+      "urlParam": "english",
+      "levels": [
+        { "name": "Level 1",
+          "modules": [
+            { "name": "My Front Yard",
+              "urlParam": "front_yard",
+              "lessons": [
+                {
+                  "name": "Module 1",
+                  "urlParam": "module_1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]

@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ui.router'])
+var dlnMovingOnUpApp = angular.module('dlnMovingOnUpApp', ['ui.router'])
   .config(['$stateProvider', '$urlRouterProvider', 
     function($stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise('/');
@@ -9,7 +9,8 @@ var app = angular.module('app', ['ui.router'])
         url: '/',
         views: {
           'header': {
-            templateUrl: 'templates/header.html'
+            templateUrl: 'templates/header.html',
+            controller: 'navigationCtrl'
           },
           'main': {
             templateUrl: 'templates/home.html'
@@ -19,6 +20,26 @@ var app = angular.module('app', ['ui.router'])
           }
         }
       })
+      .state('root.course', {
+        url: 'courses/:subject/:module/:lesson',
+        views: {
+          'main@': {
+            templateUrl: 'templates/course.html',
+            controller: 'courseCtrl'
+          }
+        }
+      })
+      // Doesn't work without defining a base URL for exported Storyline assets
+      // .state('root.course', {
+      //   url: 'courses/:subject/:module/:lesson',
+      //   views: {
+      //     'main@': {
+      //       templateUrl: function (stateParams) {
+      //         return '/courses/' + stateParams.subject + '/' + stateParams.module +'/' + stateParams.lesson + '/story.html';
+      //       }
+      //     }
+      //   }
+      // })
       .state('root.contact', {
         url: 'contact',
         views: {
