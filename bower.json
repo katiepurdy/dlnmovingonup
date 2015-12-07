@@ -1,0 +1,22 @@
+{
+  "name": "movingonup",
+  "description": "An eLearning platform that offers basic adult education Math and English courses.",
+  "main": "",
+  "authors": [
+    "Dartmouth Learning Network"
+  ],
+  "homepage": "dlnmovingonup.ca",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jspdf": "~1.1.135"
+  },
+  "license": ""
+}
