@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('dlnMovingOnUpApp')
 .service('courseListingService', function($http) {
   this.getCourseListing = function(callback) {

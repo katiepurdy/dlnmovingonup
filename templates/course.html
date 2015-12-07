@@ -9,10 +9,7 @@
     </div>
     
     <div class="dln-course-content">
-        <!-- "Course content" is really just a link to the main page of the 
-        course itself. Gets around embedding the course in an iframe, which 
-        was fraught with difficulties around launching  -->
-        <a id="dln_course_link" ui-ref="courses/{{subject}}_{{module}}_{{lesson}}">
+        <a id="dln_course_link" ui-sref="root.story({ subject: '{{subject}}', module: '{{module}}', lesson: '{{lesson}}' })">
            <img id="dln_course_image" ng-src="assets/course_images/{{subject}}_{{module}}_{{lesson}}_title_screen.png" alt="Screenshot of the course"/>
         </a>
     </div>
