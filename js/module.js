@@ -29,17 +29,18 @@ var dlnMovingOnUpApp = angular.module('dlnMovingOnUpApp', ['ui.router'])
           }
         }
       })
-      // Doesn't work without defining a base URL for exported Storyline assets
-      // .state('root.course', {
-      //   url: 'courses/:subject/:module/:lesson',
-      //   views: {
-      //     'main@': {
-      //       templateUrl: function (stateParams) {
-      //         return '/courses/' + stateParams.subject + '/' + stateParams.module +'/' + stateParams.lesson + '/story.html';
-      //       }
-      //     }
-      //   }
-      // })
+      .state('root.story', {
+        url: 'courses/:subject/:module/:lesson/launch',
+        views: {
+          'main@': {
+            templateUrl: function (stateParams) {
+              return '/mockcourses/' + stateParams.subject + '/' +
+              stateParams.module + '/' + stateParams.lesson + '/story.html';
+            },
+            controller: 'storyCtrl'
+          }
+        }
+      })
       .state('root.contact', {
         url: 'contact',
         views: {
@@ -74,4 +75,3 @@ var dlnMovingOnUpApp = angular.module('dlnMovingOnUpApp', ['ui.router'])
       }); 
     }
   ]);
-
